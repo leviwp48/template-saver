@@ -14,12 +14,14 @@ class TemplateSaver(commands.Cog, name='Template Saver'):
   async def new_template(self, ctx, keywords, keywords_amount, message):
     
     keywords_list = []
-    keywords_list.append(keywords)
+    for key in keywords.split(', '):
+      keywords_list.append(key)
     keywords_amount_list = []
-    keywords_amount_list.append(keywords_amount)
+    for amount in keywords_amount.split(', '):
+      keywords_amount_list.append(amount)
 
-    print("keywords: " + str(len(keywords_list)))
-    print("keywords_amount: " + str(len(keywords_amount_list)))
+    print("keywords: " + str(keywords_list))
+    print("keywords_amount: " + str(keywords_amount_list))
     print("message: " + message)
 
     new_template = Template()
@@ -29,7 +31,6 @@ class TemplateSaver(commands.Cog, name='Template Saver'):
 
     self.saved_templates.append(new_template)
 
-  
   @commands.command(name="view_templates")
   async def view_templates(self, ctx):
     template_count = 1
