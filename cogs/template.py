@@ -58,7 +58,8 @@ class Template:
 
 
     self.keywords_list = keywords 
-    #print("keywords given: " + self.keywords_list)
+    print(self.keyword_map)
+
     
     #self.text = text.split(' ')
     #print(self.text)
@@ -67,9 +68,20 @@ class Template:
   def show(self):
     return self.text
   
-  def use(keywords_args=[]):
-    print("hi")
-    
+  def use(self, keywords):
+    temp_keywords = keywords.split(', ')
+    print(temp_keywords)
+    text_to_send = self.text
+    key_count = 0
+    for word in self.keywords_list:
+      print(word) 
+      count = self.keyword_map[word]
+      while count > 0:
+        text_to_send = text_to_send.replace("{" + word + "}", temp_keywords[key_count], 1)
+        key_count += 1
+        count -= 1
+    return text_to_send
+
     
 
     
