@@ -1,4 +1,3 @@
-import discord
 from discord.ext import commands
 from .template import Template
 
@@ -16,9 +15,6 @@ class TemplateSaver(commands.Cog, name='Template Saver'):
     for key in keywords.split(', '):
       keywords_list.append(key)
 
-    #print("keywords: " + str(keywords_list))
-    #print("message: " + message)
-
     new_template = Template()
     new_template.new_template(ctx, name, keywords_list, message)
 
@@ -29,10 +25,7 @@ class TemplateSaver(commands.Cog, name='Template Saver'):
   async def view(self, ctx):
     template_count = 1
     template_list = "Saved templates: \n================ \n"
-    
-    #for i in self.saved_templates:
-      #template_list = template_list + "[" + str(template_count) + "] " + i + "\n"
-      #template_count+=1
+       
     for template in self.saved_templates:
       template_list = template_list + str(template_count) + ": " + template.name + '\n'
       template_count += 1
@@ -40,14 +33,16 @@ class TemplateSaver(commands.Cog, name='Template Saver'):
 
 
   @commands.command(name="use")
-  async def use(self,ctx, name, keywords):
+  async def use(self, ctx, name, keywords):
+    print("tyring to use")
     tracker = 0
     for template in self.saved_templates:
+      print(" using tempalte : " + template.name)
       if name == template.name:
         print("going to use")
         await ctx.send(self.saved_templates[tracker].use(keywords)) 
       tracker += 1
-      return
+    return
 
 
   @commands.command(name="confirm")
