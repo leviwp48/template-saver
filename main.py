@@ -10,9 +10,13 @@ bot = commands.Bot(
 bot.author_id = 149926769602854913  # Change to your discord id!!!
 
 @bot.event 
-async def on_ready():  # When the bot is ready
-    print("I'm in")
-    print(bot.user)  # Prints the bot's username and identifier
+async def on_ready(ctx):  # When the bot is ready
+    await ctx.send("Template saver ready for Template saving!") # Prints the bot's username and identifier
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send("Command not found. You can view the available commands with **.help**.")
 
 extensions = [
 	'cogs.cog_example',  # Same name as it would be if you were importing it

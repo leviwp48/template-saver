@@ -21,6 +21,11 @@ class TemplateSaver(commands.Cog, name='Template Saver'):
     self.saved_templates.append(new_template)
     await ctx.send("Template was saved!")
 
+  @new.error
+  async def new_error(self, ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+      await ctx.send("Missing a required argument, there may be a quote out of place.")
+
   @commands.command(name="view")
   async def view(self, ctx):
     template_count = 1
@@ -31,7 +36,11 @@ class TemplateSaver(commands.Cog, name='Template Saver'):
       template_count += 1
     await ctx.send(template_list)
 
-
+  @view.error
+  async def view_error(self, ctx, error):
+    if isinstance(error, commands.CheckAnyFailure):
+      await ctx.send("Not sure what happend here :[")
+  
   @commands.command(name="use")
   async def use(self, ctx, name, keywords):
     print("tyring to use")
@@ -43,14 +52,12 @@ class TemplateSaver(commands.Cog, name='Template Saver'):
         await ctx.send(self.saved_templates[tracker].use(keywords)) 
       tracker += 1
     return
-
-
-  @commands.command(name="confirm")
-  async def confirm(self, ctx, answer):
-    if answer == "yes":
-      return True 
-    else:
-      return False 
     
+  @use.error
+  async def use_error(self, ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+      await ctx.send("Missing a required argument, there may be a quote out of place.")
+    #should have an error if a template doesn't exist
+
 def setup(bot):
 	bot.add_cog(TemplateSaver(bot))
