@@ -10,7 +10,7 @@ Template Saver is a simple bot that makes it easier to send repeated messages su
 ### Commands
 
 #### .how
-'''
+`
 How to use this bot: 
 
 =================================
@@ -52,4 +52,4 @@ Use the .use command with the following arguments (each between quotes)
 
  Remember to put arguments between quotes 
 =================================
-'''
+`
