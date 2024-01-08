@@ -1,62 +1,58 @@
-
 <h1 align="center">Template Saver</h1>
 
-
 # Overview 
-Template Saver is a simple bot that makes it easier to send repeated messages such as announcements and reminders. 
+Template Saver is a simple bot designed to streamline sending repeated messages such as announcements and reminders.
 
 # Usage
 
-### Commands
+## Commands
 
-#### .new
+### .new
 
-#### .view
+### .view
 
-#### .use
+### .use
 
-#### .how
+### .how
+This will display a message that tells how to use this bot 
 
-You'll receive a message like this: 
+## How to Use
 
-How to use this bot: 
+### Creating a New Template
 
-=================================
-Make a new Template: 
-
-Use the .new command with the following arguments (each between quotes) 
+Use the `.new` command with the following arguments (each between quotes):
 - Template name
-- Keywords to use in a comma separated list 
-- Text for the Template with your keywords embedded between quotes -> Like so: '[keyword]' 
+- Keywords (comma-separated)
+- Template text with keywords embedded between quotes (e.g., '[keyword]')
 
-     Example: .new "Event Members", "member, event", "
-        List of members for [event]: 
-         * [member] 
-         * [member]" 
+Example:
+```markdown
+.new "Event Members", "member, event", "
+   List of members for [event]: 
+   * [member] 
+   * [member]"
+```
 
-Remember to put arguments between quotes 
-=================================
+### Viewing Saved Templates
+Use the .view command to see your saved templates.
 
-=================================
-View any saved Templates: 
+### Using Saved Templates
+To use a saved template:
 
-Use the .view command and you'll see your saved Templates
-=================================
+1. Enter values in the same order as they appear in the text.
+2. Use the .use command with the following arguments (each between quotes):
+   - Template name
+   - Words to insert into the template (comma-separated)
 
-=================================
-Use any saved Templates: 
- 
-NOTE: You will need to enter your values in the same order as they appear in the text. In this case, "[event]" comes first, so you would enter the value for the event first 
+Example: `.use "Event Members", "Game Night, Joe, Lucas"`
 
-Use the .use command with the following arguments (each between quotes) 
-- Template name
-- Words to insert into template (in a comma separated list)
+This will result in:
+```markdown
+List of members for Game Night:
+Joe
+Lucas
+```
 
-    Example: .use "Event Members", "Game Night, Joe, Lucas"
-    This will result in: 
-    List of members for Game Night: 
-    * Joe
-    * Lucas 
+Remember to put arguments between quotes.
 
- Remember to put arguments between quotes 
-=================================
+
